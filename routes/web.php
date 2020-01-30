@@ -14,17 +14,19 @@
 Route::localizedGroup(function () {
 	Route::get('/', function () {
 		return view('main', [
-	        /*'contacts' => \App\Contacts::find(1),
-            'reviews' => \App\Reviews::get(),
-            'portfolios' => \App\Portfolios::orderBy('numb', 'asc')->get(),
-            'galleries' => \App\Galleries::find(1),*/
+			'main' => \App\Mains::find(1),
+			'contact' => \App\Contacts::find(1),
+			'review' => \App\Reviews::get(),
+			'category' => \App\Categories::get(),
+			'brand' => \App\Brands::get(),
+			'parts' => \App\Parts::get(),
             'controller' => new \App\Http\Controllers\Controller()
         ]);
 	});
 });
 
-/*Auth::routes();
+Auth::routes();
 
 Route::get('/home', function () {
 	return redirect('/admin');
-});*/
+});
