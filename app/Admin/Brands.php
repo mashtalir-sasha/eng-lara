@@ -28,6 +28,7 @@ AdminSection::registerModel(Brands::class, function (ModelConfiguration $model) 
                     return [
                         AdminFormElement::text('title', 'Название')->required(),
                         AdminFormElement::text('link', 'Ссылка на каталог'),
+                        AdminFormElement::text('linkCat', 'Ссылка на прайс'),
                     ];
                 })->addColumn(function () {
                     return [

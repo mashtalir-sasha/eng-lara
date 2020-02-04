@@ -23,9 +23,22 @@
 	<meta name="theme-color" content="#000">
 
 	<link rel="stylesheet" href="css/main.min.css">
+
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-PDKW53X');</script>
+	<!-- End Google Tag Manager -->
 </head>
 
 <body>
+
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PDKW53X"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
 
 	<div class="content">	
 
@@ -151,7 +164,7 @@
 								<div class="col">
 									<div class="nav-phone">
 										<a href="tel:+{{ preg_replace('~[^0-9]~','',$contact['phone-top']) }}" class="nav-phone__link">{{ $contact['phone-top'] }}</a>
-										<a class="nav-phone__ico viber d-none d-sm-block" href="viber://chat?number=+{{ $contact['phone-topviber'] }}"></a>
+										<a class="nav-phone__ico viber d-none d-sm-block" href="viber://chat?number={{ $contact['phone-topviber'] }}"></a>
 										<a href="{{ $contact['phone-toptele'] }}" target="_blank" class="nav-phone__ico telegram" style="display: block;"></a>
 									</div>
 								</div>
@@ -187,11 +200,11 @@
 						</div>
 					</div>
 					<div class="col-lg-8 col-md-7">
-						<img src="img/head-img.svg" alt="engineering" class="head-img d-none d-sm-block">
+						<img src="img/blank.gif" data-src="img/head-img.svg" alt="engineering" class="head-img d-none d-sm-block lazy">
 					</div>
 				</div>
 			</div>
-			<img src="img/head_bg.jpg" alt="engineering" class="head-img d-block d-sm-none">
+			<img src="img/blank.gif" data-src="img/head_bg.jpg" alt="engineering" class="head-img d-block d-sm-none lazy">
 			<div class="container">
 				<div class="row posr">
 					<div class="head-bg"></div>
@@ -249,7 +262,7 @@
 								@elseif (App::isLocale('uk'))
 									<p class="catalog-item__name">{!! $item['titleUK'] !!}</p>
 								@endif
-								<img src="{{ $item['img'] }}" alt="engineering" class="catalog-item__img">
+								<img src="img/blank.gif" data-src="{{ $item['img'] }}" alt="engineering" class="catalog-item__img lazy">
 								<a href="javascript:;" data-src="#modal2" class="catalog-item__btn fancybox formLink" data-link="{{ $item['link'] }}">{!! trans('main.catalog-btn') !!}</a>
 							</div>
 						</div>
@@ -266,7 +279,7 @@
 									@elseif (App::isLocale('uk'))
 										<p class="catalog-item__name">{!! $item['titleUK'] !!}</p>
 									@endif
-									<img src="{{ $item['img'] }}" alt="engineering" class="catalog-item__img">
+									<img src="img/blank.gif" data-src="{{ $item['img'] }}" alt="engineering" class="catalog-item__img lazy">
 									<a href="javascript:;" data-src="#modal2" class="catalog-item__btn fancybox formLink" data-link="{{ $item['link'] }}">{!! trans('main.catalog-btn') !!}</a>
 								</div>
 							
@@ -306,7 +319,7 @@
 				<div class="row justify-content-center">
 					@foreach ($brand as $item)
 						<div class="col-lg-3 col-md-4 col-sm-6">
-							<div class="brands-item"><img src="{{ $item['img'] }}" alt="engineering"></div>
+							<div class="brands-item"><img src="img/blank.gif" data-src="{{ $item['img'] }}" alt="engineering" class="lazy"></div>
 							<a href="javascript:;" data-src="#modal2" class="brands-item__btn fancybox formLink" data-link="{{ $item['link'] }}">{{ trans('main.brands-btn') }}</a>
 						</div>
 					@endforeach
@@ -337,14 +350,14 @@
 							@if($part['brand_id'] == $item['id'])
 								<div class="col-lg-3 col-md-4 col-sm-6">
 									<div class="parts-item scroll">
-										<img src="{{ $part['img'] }}" alt="engineering" class="parts-item__img">
+										<img src="img/blank.gif" data-src="{{ $part['img'] }}" alt="engineering" class="parts-item__img lazy">
 										@if (App::isLocale('ru'))
 											<p class="parts-item__name">{!! $part['name'] !!}</p>
 										@elseif (App::isLocale('uk'))
 											<p class="parts-item__name">{!! $part['nameUK'] !!}</p>
 										@endif
 										<p class="parts-item__id">{{ $part['numb'] }}</p>
-										<a href="javascript:;" data-src="#modal4" class="parts-item__btn fancybox formLink" data-link="{{ $item['link'] }}">{{ trans('main.parts-btn') }}</a>
+										<a href="javascript:;" data-src="#modal4" class="parts-item__btn fancybox formLink" data-link="{{ $item['linkCat'] }}">{{ trans('main.parts-btn') }}</a>
 									</div>
 								</div>
 							@endif
@@ -357,14 +370,14 @@
 									@foreach ($parts as $part)
 									@if($part['brand_id'] == $item['id'])
 										<div class="parts-item animated">
-											<img src="{{ $part['img'] }}" alt="engineering" class="parts-item__img">
+											<img src="img/blank.gif" data-src="{{ $part['img'] }}" alt="engineering" class="parts-item__img lazy">
 											@if (App::isLocale('ru'))
 												<p class="parts-item__name">{!! $part['name'] !!}</p>
 											@elseif (App::isLocale('uk'))
 												<p class="parts-item__name">{!! $part['nameUK'] !!}</p>
 											@endif
 											<p class="parts-item__id">{{ $part['numb'] }}</p>
-											<a href="javascript:;" data-src="#modal4" class="parts-item__btn fancybox formLink" data-link="{{ $item['link'] }}">{{ trans('main.parts-btn') }}</a>
+											<a href="javascript:;" data-src="#modal4" class="parts-item__btn fancybox formLink" data-link="{{ $item['linkCat'] }}">{{ trans('main.parts-btn') }}</a>
 										</div>
 									@endif
 									
@@ -489,33 +502,33 @@
 					</div>
 				</div>
 				<div class="row row-xs">
-					<img src="img/about_bg.jpg" alt="engineering" class="about-img">
+					<img src="img/blank.gif" data-src="img/about_bg.jpg" alt="engineering" class="about-img lazy">
 				</div>
 				<div class="row">
 					<div class="col-lg-8 offset-lg-3 col-md-10 offset-md-1">
 						<div class="about-block">
 							<div class="about-half">
-								<img src="img/about-ico1.svg" alt="engineering" class="about-half__img">
+								<img src="img/blank.gif" data-src="img/about-ico1.svg" alt="engineering" class="about-half__img lazy">
 								<p class="about-half__txt">{!! trans('main.about-item1') !!}</p>
 							</div>
 							<div class="about-half">
-								<img src="img/about-ico2.svg" alt="engineering" class="about-half__img">
+								<img src="img/blank.gif" data-src="img/about-ico2.svg" alt="engineering" class="about-half__img lazy">
 								<p class="about-half__txt">{!! trans('main.about-item2') !!}</p>
 							</div>
 							<div class="about-half">
-								<img src="img/about-ico3.svg" alt="engineering" class="about-half__img">
+								<img src="img/blank.gif" data-src="img/about-ico3.svg" alt="engineering" class="about-half__img lazy">
 								<p class="about-half__txt">{!! trans('main.about-item3') !!}</p>
 							</div>
 							<div class="about-half">
-								<img src="img/about-ico4.svg" alt="engineering" class="about-half__img">
+								<img src="img/blank.gif" data-src="img/about-ico4.svg" alt="engineering" class="about-half__img lazy">
 								<p class="about-half__txt">{!! trans('main.about-item4') !!}</p>
 							</div>
 							<div class="about-half">
-								<img src="img/about-ico5.svg" alt="engineering" class="about-half__img">
+								<img src="img/blank.gif" data-src="img/about-ico5.svg" alt="engineering" class="about-half__img lazy">
 								<p class="about-half__txt">{!! trans('main.about-item5') !!}</p>
 							</div>
 							<div class="about-half">
-								<img src="img/about-ico6.svg" alt="engineering" class="about-half__img">
+								<img src="img/blank.gif" data-src="img/about-ico6.svg" alt="engineering" class="about-half__img lazy">
 								<p class="about-half__txt">{!! trans('main.about-item6') !!}</p>
 							</div>
 						</div>
@@ -531,7 +544,7 @@
 					</div>
 					<div class="col-md-5">
 						<!-- <iframe class="about-video" src="https://www.youtube.com/embed/k6XJHY6TyNI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-						<video class="about-video" controls loop poster="img/about-video.jpg">
+						<video class="about-video video" controls loop preload="none" poster="img/about-video.jpg">
 							<source src="video/1.mp4" type="video/mp4">
 						</video>
 					</div>
@@ -541,7 +554,7 @@
 
 		<section class="defect">
 			<div class="container">
-				<img src="img/defect-img.png" alt="engineering" class="defect-img">
+				<img src="img/blank.gif" data-src="img/defect-img.png" alt="engineering" class="defect-img lazy">
 				<div class="row">
 					<div class="col-md-4 order-md-2 col-sm-6">
 						<h4 class="defect-ttl scroll">{{ trans('main.defect-ttl') }}</h4>
@@ -549,13 +562,13 @@
 					</div>
 					<div class="col-sm-6 d-block d-md-none">
 						<!-- <iframe class="defect-video" src="https://www.youtube.com/embed/xK8vTSvyr-g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-						<video class="defect-video" controls loop poster="img/about-video2.jpg">
+						<video class="defect-video video" controls loop preload="none" poster="img/about-video2.jpg">
 							<source src="video/2.mp4" type="video/mp4">
 						</video>
 					</div>
 					<div class="col-md-5 offset-md-1 order-md-1">
 						<!-- <iframe class="defect-video d-none d-md-block" src="https://www.youtube.com/embed/xK8vTSvyr-g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-						<video class="defect-video d-none d-md-block" controls loop poster="img/about-video2.jpg">
+						<video class="defect-video video d-none d-md-block" controls loop preload="none" poster="img/about-video2.jpg">
 							<source src="video/2.mp4" type="video/mp4">
 						</video>
 						<form action="mail.php" method="POST" class="form_check defect-form">
@@ -589,7 +602,7 @@
 				</div>
 				<div class="row align-items-center">
 					<div class="col-md-5">
-						<img src="img/delivery-img.png" alt="engineering" class="delivery-img">
+						<img src="img/blank.gif" data-src="img/delivery-img.png" alt="engineering" class="delivery-img lazy">
 					</div>
 					<div class="col-md-7">
 						<h3 class="delivery-ttl scroll d-none d-md-block">{!! trans('main.delivery-ttl') !!}</h3>
@@ -598,10 +611,10 @@
 							<p class="delivery-block__item">{{ trans('main.delivery-txt2') }}</p>
 						</div>
 						<div class="delivery-images scroll">
-							<img src="img/delivery-ico1.png" alt="engineering" class="delivery-images__img">
-							<img src="img/delivery-ico2.png" alt="engineering" class="delivery-images__img">
-							<img src="img/delivery-ico3.png" alt="engineering" class="delivery-images__img">
-							<img src="img/delivery-ico4.png" alt="engineering" class="delivery-images__img">
+							<img src="img/blank.gif" data-src="img/delivery-ico1.png" alt="engineering" class="delivery-images__img lazy">
+							<img src="img/blank.gif" data-src="img/delivery-ico2.png" alt="engineering" class="delivery-images__img lazy">
+							<img src="img/blank.gif" data-src="img/delivery-ico3.png" alt="engineering" class="delivery-images__img lazy">
+							<img src="img/blank.gif" data-src="img/delivery-ico4.png" alt="engineering" class="delivery-images__img lazy">
 						</div>
 					</div>
 				</div>
@@ -723,12 +736,12 @@
 				</div>
 				<div class="row align-items-center foot-line">
 					<div class="col">
-						<img src="img/logo.png" alt="engineering" class="foot-logo">
+						<img src="img/blank.gif" data-src="img/logo.png" alt="engineering" class="foot-logo lazy">
 					</div>
 					<div class="col">
 						<a href="https://wamp.com.ua/" target="_blank" class="dev">
 							<span>{{ trans('main.dev') }}</span>
-							<img src="img/wamp.png" alt="engineering">
+							<img src="img/blank.gif" data-src="img/wamp.png" alt="engineering" class="lazy">
 						</a>
 					</div>
 				</div>
@@ -743,7 +756,7 @@
 			
 			<div id="modal1" class="modal">
 				<div class="modal-img">
-					<img src="img/modal1_bg.jpg" alt="engineering">
+					<img src="img/blank.gif" data-src="img/modal1_bg.jpg" alt="engineering" class="lazy">
 				</div>
 				<h3 class="modal-ttl">{{ trans('main.modal1-ttl') }}</h3>
 				<form action="mail.php" method="POST" class="form_check modal-form">
@@ -763,7 +776,7 @@
 
 			<div id="modal2" class="modal modal_second">
 				<div class="modal-img">
-					<img src="img/modal4-img.png" alt="engineering" style="max-width: 368px">
+					<img src="img/blank.gif" data-src="img/modal4-img.png" alt="engineering" style="max-width: 368px" class="lazy">
 				</div>
 				<form action="mail.php" method="POST" class="form_check modal-form">
 					<h3 class="modal-ttl">{{ trans('main.modal2-ttl') }}</h3>
@@ -783,7 +796,7 @@
 
 			<div id="modal4" class="modal modal_second">
 				<div class="modal-img">
-					<img src="img/modal2-img.png" alt="engineering">
+					<img src="img/blank.gif" data-src="img/modal2-img.png" alt="engineering" class="lazy">
 				</div>
 				<form action="mail.php" method="POST" class="form_check modal-form">
 					<h3 class="modal-ttl">{{ trans('main.modal4-ttl') }}</h3>

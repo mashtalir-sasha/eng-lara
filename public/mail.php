@@ -20,10 +20,10 @@
 
 	$headers = "MIME-Version: 1.0\r\n";
 	$headers .= "Content-type: text/html; charset=UTF-8\r\n";
-	$headers .= "From: no-reply@wamp.com.ua"; // Заменить домен на домен клиента
+	$headers .= "From: no-reply@studioin.com.ua"; // Заменить домен на домен клиента
 
 	if (!$title && !$phonenum) {
 	} else {
-		mail($to,"New lead(engineering.wamp.com.ua)",$message,$headers); // Заменить домен на домен клиента
+		mail($to,"New lead(lp.studioin.com.ua)",$message,$headers); // Заменить домен на домен клиента
 	}
 ?>
